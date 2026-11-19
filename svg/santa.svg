@@ -1,0 +1,50 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 500" width="400" height="500">
+    <g id="sack">
+        <ellipse cx="295" cy="340" rx="55" ry="70" fill="#8d6e63" />
+        <polygon points="275,275 315,275 325,250 265,250" fill="#8d6e63" />
+        <rect x="272" y="270" width="46" height="8" rx="4" fill="#fbc02d" />
+    </g>
+
+
+    <g id="coat">
+        <!-- boots -->
+        <rect x="150" y="420" width="36" height="40" rx="8" fill="#212121" />
+        <rect x="214" y="420" width="36" height="40" rx="8" fill="#212121" />
+        <!-- body -->
+        <rect x="130" y="230" width="140" height="190" rx="45" fill="#d32f2f" />
+        <rect x="125" y="395" width="150" height="25" rx="12" fill="#ffffff" />
+        <!-- belt -->
+        <rect x="130" y="325" width="140" height="22" fill="#212121" />
+        <rect x="182" y="321" width="36" height="30" rx="5" fill="none" stroke="#fbc02d"
+            stroke-width="6" />
+        <!-- left arm -->
+        <line x1="135" y1="255" x2="85" y2="205" stroke="#d32f2f" stroke-width="28"
+            stroke-linecap="round" />
+        <circle cx="85" cy="205" r="15" fill="#ffffff" />
+        <circle cx="75" cy="195" r="14" fill="#d32f2f" />
+        <!-- right arm -->
+        <line x1="265" y1="255" x2="300" y2="315" stroke="#d32f2f" stroke-width="28"
+            stroke-linecap="round" />
+        <circle cx="300" cy="315" r="15" fill="#ffffff" />
+        <circle cx="308" cy="326" r="14" fill="#d32f2f" />
+    </g>
+
+    <!-- head and beard -->
+    <g id="beard">
+        <circle cx="200" cy="175" r="45" fill="#ffccbc" />
+        <circle cx="185" cy="165" r="4" fill="#212121" />
+        <circle cx="215" cy="165" r="4" fill="#212121" />
+        <path d="M150 180 Q150 265 200 270 Q250 265 250 180 Q225 200 200 190 Q175 200 150 180 Z"
+            fill="#ffffff" />
+        <ellipse cx="185" cy="188" rx="16" ry="7" fill="#f5f5f5" />
+        <ellipse cx="215" cy="188" rx="16" ry="7" fill="#f5f5f5" />
+        <circle cx="200" cy="178" r="7" fill="#ef9a9a" />
+    </g>
+
+    <!-- Căciula -->
+    <g id="hat">
+        <path d="M152 150 Q200 60 275 115 L248 150 Z" fill="#d32f2f" />
+        <circle cx="280" cy="118" r="14" fill="#ffffff" />
+        <rect x="148" y="140" width="104" height="22" rx="11" fill="#ffffff" />
+    </g>
+</svg>
