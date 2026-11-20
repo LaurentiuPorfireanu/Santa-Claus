@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="ro">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Santa Claus</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css" rel="stylesheet">
+    <style>
+        body {
+            background: radial-gradient(circle at top, #16325b 0%, #0b192c 100%);
+            color: #ffffff;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .scene-card {
+            background-color: rgba(255, 255, 255, 0.08);
+            border: 1px solid rgba(255, 255, 255, 0.18);
+            border-radius: 20px;
+            backdrop-filter: blur(6px);
+        }
+
+        .animation-frame {
+            max-width: 100%;
+            width: 720px;
+            height: auto;
+            border-radius: 14px;
+            border: 3px solid #f8d568;
+            box-shadow: 0 12px 35px rgba(0, 0, 0, 0.45);
+        }
+    </style>
+</head>
+
+<body>
+
+    <header class="py-4 text-center">
+        <div class="container">
+            <span class="badge bg-danger text-uppercase px-3 py-2 mb-2">TIM</span>
+            <h1 class="display-5 fw-bold text-warning">Santa Claus</h1>
+            <p class="lead text-light opacity-75 mb-0">Alege o scenă festivă pentru a porni animația și muzica de
+                Crăciun</p>
+        </div>
+    </header>
+
+    <main class="container my-auto py-3">
+        <div class="row justify-content-center">
+            <div class="col-lg-9">
+                <div class="scene-card p-4 p-md-5 text-center">
+
+                    <h2 id="scene-title" class="h4 text-warning mb-3">
+                        <i class="bi bi-tree-fill me-2"></i>Scena 1: Moș Crăciun și Bradul Împodobit
+                    </h2>
+
+                    <div class="mb-4">
+                        <img id="main-animation" src="gif/santa.gif" alt="Animație Moș Crăciun și Bradul de Crăciun"
+                            class="animation-frame img-fluid" usemap="#festive-map">
+
+                        <map name="festive-map" id="festive-map"></map>
+                    </div>
+
+                    <div class="d-flex flex-wrap justify-content-center gap-3 mb-3">
+                        <button type="button" class="btn btn-danger btn-lg px-4 shadow"
+                            onclick="activateScene('gif/santa.gif', 'audio/song1.mp3', 'bi-tree-fill', 'Scena 1: Moș Crăciun și Bradul Împodobit')">
+                            <i class="bi bi-tree-fill me-2"></i>Moș Crăciun și Bradul
+                        </button>
+
+                        <button type="button" class="btn btn-success btn-lg px-4 shadow"
+                            onclick="activateScene('gif/reindeer.gif', 'audio/song2.mp3', 'bi-gift-fill', 'Scena 2: Moș Crăciun și Renii')">
+                            <i class="bi bi-gift-fill me-2"></i>Moș Crăciun și Renii
+                        </button>
+
+                        <button type="button" class="btn btn-primary btn-lg px-4 shadow"
+                            onclick="activateScene('gif/snow.gif', 'audio/song3.mp3', 'bi-snow', 'Scena 3: Ninsoare de Poveste')">
+                            <i class="bi bi-snow me-2"></i>Ninsoare și Ornamente
+                        </button>
+                    </div>
+
+                    <div>
+                        <button id="toggle-music-btn" type="button" class="btn btn-outline-light btn-sm px-3"
+                            onclick="toggleMusic()">
+                            <i class="bi bi-volume-mute-fill me-1"></i>Muzică: OFF
+                        </button>
+                    </div>
+
+                    <audio id="bg-music" src="audio/song1.mp3" loop></audio>
+
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <footer class="py-3 text-center text-light opacity-50 small">
+        <div class="container">
+            Proiect realizat cu GIMP, SVG &amp; Bootstrap 5
+        </div>
+    </footer>
+
+    <script>
+        const musicPlayer = document.getElementById("bg-music");
+        const animationImg = document.getElementById("main-animation");
+        const sceneTitle = document.getElementById("scene-title");
+        const toggleBtn = document.getElementById("toggle-music-btn");
+
+        function updateToggleButton(isPlaying) {
+            if (isPlaying) {
+                toggleBtn.innerHTML = '<i class="bi bi-volume-up-fill me-1"></i>Muzică: ON';
+                toggleBtn.classList.remove("btn-outline-light");
+                toggleBtn.classList.add("btn-warning");
+            } else {
+                toggleBtn.innerHTML = '<i class="bi bi-volume-mute-fill me-1"></i>Muzică: OFF';
+                toggleBtn.classList.remove("btn-warning");
+                toggleBtn.classList.add("btn-outline-light");
+            }
+        }
+
+        function activateScene(gifPath, audioPath, iconClass, title) {
+            animationImg.src = gifPath;
+            sceneTitle.innerHTML = '<i class="bi ' + iconClass + ' me-2"></i>' + title;
+
+            musicPlayer.pause();
+            musicPlayer.src = audioPath;
+            musicPlayer.currentTime = 0;
+            musicPlayer.play()
+                .then(() => updateToggleButton(true))
+                .catch(() => {
+                    updateToggleButton(false);
+                    console.log("Fișierul audio nu a fost găsit în folderul audio/.");
+                });
+        }
+
+        function toggleMusic() {
+            if (musicPlayer.paused) {
+                musicPlayer.play()
+                    .then(() => updateToggleButton(true))
+                    .catch(() => console.log("Nu s-a putut porni melodia."));
+            } else {
+                musicPlayer.pause();
+                updateToggleButton(false);
+            }
+        }
+    </script>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+
+</html>
